@@ -1,0 +1,9 @@
+<header class="header">
+  <div class="left">
+    <a routerLink="/">School Admin</a>
+  </div>
+  <div class="right" *ngIf="token.isLoggedIn()">
+    <span class="roles">{{ token.getRoles().join(', ') }}</span>
+    <button (click)="logout()">Logout</button>
+  </div>
+</header>

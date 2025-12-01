@@ -1,0 +1,67 @@
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Row hover effect */
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Error message */
+.err {
+  color: #c62828;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+button {
+  padding: 6px 10px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Assign block */
+.assign-block {
+  margin-top: 8px;
+}
+
+.assign-block label {
+  margin-right: 6px;
+  font-weight: 500;
+}
+
+.assign-block select {
+  padding: 5px;
+  margin-right: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

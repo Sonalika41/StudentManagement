@@ -1,0 +1,20 @@
+<h3>{{ id ? 'Edit Class' : 'Create Class' }}</h3>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="form-box">
+  <label for="name">Grade</label>
+  <input id="name" formControlName="name" placeholder="e.g. Grade 1" />
+
+  <label for="section">Section</label>
+  <input id="section" formControlName="section" placeholder="e.g. A" />
+
+  <label for="teacher">Class Teacher</label>
+  <select id="teacher" formControlName="classTeacherUserId">
+    <option value="">Unassigned</option>
+    <option *ngFor="let t of teachers" [value]="t.id">{{ t.email }}</option>
+  </select>
+
+  <button type="submit">{{ id ? 'Update' : 'Create' }}</button>
+
+  <p class="msg" *ngIf="message">{{ message }}</p>
+  <p class="err" *ngIf="error">{{ error }}</p>
+</form>

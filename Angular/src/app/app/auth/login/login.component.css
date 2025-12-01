@@ -1,0 +1,4 @@
+label { display:block; margin-top:10px; }
+input { width:100%; padding:8px; margin-top:4px; }
+button { margin-top:12px; padding:8px 12px; }
+.error { color:#c62828; margin-top:8px; }

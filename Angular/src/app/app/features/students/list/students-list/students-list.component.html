@@ -1,0 +1,74 @@
+<h3>Students List (IT)</h3>
+<p class="err" *ngIf="error">{{ error }}</p>
+<p class="msg" *ngIf="message">{{ message }}</p>
+
+<table *ngIf="students.length > 0" class="students-table">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Course</th>
+      <th>Marks</th>
+      <th>Attendance %</th>
+      <th>Class</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of students">
+      <td>{{ s.fullName }}</td>
+      <td>{{ s.email }}</td>
+      <td>{{ s.course }}</td>
+      <td>{{ s.marks }}</td>
+      <td>{{ s.attendancePercentage }}</td>
+      <td>
+        <span *ngIf="s.classId">{{ s.className }} ({{ s.classSection }})</span>
+        <span *ngIf="!s.classId"><em>Unassigned</em></span>
+      </td>
+      <td>
+        <button (click)="startEdit(s)">Edit</button>
+        <button (click)="deleteStudent(s.studentID)" class="btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="students.length === 0 && !error"><em>No students found.</em></p>
+
+<!-- ✅ Inline edit form -->
+<div *ngIf="editing" class="edit-box">
+  <h4>Edit Student</h4>
+  <form (ngSubmit)="saveEdit()">
+    <label>Full Name</label>
+    <input [(ngModel)]="editing.fullName" name="fullName" required />
+
+    <label>Age</label>
+    <input type="number" [(ngModel)]="editing.age" name="age" required />
+
+    <label>Email</label>
+    <input [(ngModel)]="editing.email" name="email" required />
+
+    <label>Course</label>
+    <input [(ngModel)]="editing.course" name="course" required />
+
+    <label>Marks</label>
+    <input type="number" [(ngModel)]="editing.marks" name="marks" required />
+
+    <label>Attendance %</label>
+    <input type="number" [(ngModel)]="editing.attendancePercentage" name="attendancePercentage" required />
+
+    <label>Guardian Contact</label>
+    <input [(ngModel)]="editing.guardianContact" name="guardianContact" />
+
+    <label>Class</label>
+    <select [(ngModel)]="editing.classId" name="classId">
+      <option value="">Unassigned</option>
+      <option *ngFor="let c of classes" [value]="c.classId">
+        {{ c.name }} ({{ c.section }}) - {{ c.classTeacherEmail }}
+      </option>
+    </select>
+
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

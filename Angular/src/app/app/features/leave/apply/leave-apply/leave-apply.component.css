@@ -1,0 +1,5 @@
+label { display:block; margin-top:10px; }
+input, textarea { width:100%; padding:8px; margin-top:4px; }
+button { margin-top:12px; }
+.msg { color:#2e7d32; }
+.err { color:#c62828; }

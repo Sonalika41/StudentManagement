@@ -1,0 +1,57 @@
+<h3>Users</h3>
+<div class="msg" *ngIf="message">{{ message }}</div>
+<div class="err" *ngIf="error">{{ error }}</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Roles</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users" [hidden]="u.email === 'admin@school.local'">
+      <td>{{ u.email }}</td>
+      <td>{{ u.roles.join(', ') }}</td>
+      <td>
+        <!-- Assign buttons -->
+        <button 
+          [disabled]="u.email === 'admin@school.local' || u.roles.includes('Student')" 
+          (click)="assign(u.id, 'Student')">
+          Add Student
+        </button>
+        <button 
+          [disabled]="u.email === 'admin@school.local' || u.roles.includes('Teacher')" 
+          (click)="assign(u.id, 'Teacher')">
+          Add Teacher
+        </button>
+        <button 
+          [disabled]="u.email === 'admin@school.local' || u.roles.includes('Principal')" 
+          (click)="assign(u.id, 'Principal')">
+          Add Principal
+        </button>
+
+        <!-- Remove buttons -->
+        <button 
+          [disabled]="u.email === 'admin@school.local' || !u.roles.includes('Teacher')" 
+          (click)="remove(u.id, 'Teacher')">
+          Remove Teacher
+        </button>
+        <button 
+          [disabled]="u.email === 'admin@school.local' || !u.roles.includes('Principal')" 
+          (click)="remove(u.id, 'Principal')">
+          Remove Principal
+        </button>
+
+        <!-- Delete button -->
+        <button 
+          class="danger" 
+          [disabled]="u.email === 'admin@school.local'" 
+          (click)="delete(u.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

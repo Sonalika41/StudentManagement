@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #222;
+  color: #fff;
+  padding: 10px;
+}
+a { color: #fff; text-decoration: none; font-weight: 600; }
+button { background:#ff5252; color:#fff; border:none; padding:6px 10px; border-radius:4px; cursor:pointer; }
+.roles { margin-right: 10px; opacity: 0.8; }

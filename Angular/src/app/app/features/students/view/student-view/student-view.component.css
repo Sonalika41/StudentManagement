@@ -1,0 +1,39 @@
+h3 {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.err {
+  color: #d32f2f;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.profile-box {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fafafa;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.profile-box p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.btn-apply {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1976d2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn-apply:hover {
+  background-color: #1565c0;
+}

@@ -1,0 +1,54 @@
+<h3>Classes</h3>
+<p class="err" *ngIf="error">{{ error }}</p>
+
+<!-- Debug line (optional, remove in production) -->
+<p>IT: {{ isIT }} | Principal: {{ isPrincipal }} | Teacher: {{ isTeacher }}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>Section</th>
+      <th>Teacher</th>
+      <th>Students</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of classes">
+      <td>{{ c.name }}</td>
+      <td>{{ c.section }}</td>
+      <td>{{ c.classTeacherEmail || 'Unassigned' }}</td>
+      <td>{{ c.studentCount }}</td>
+      <td>
+        <!-- Edit class: IT and Principal -->
+        <button *ngIf="isIT || isPrincipal" (click)="editClass(c.classId)">
+          Edit
+        </button>
+
+        <!-- Delete class: IT only -->
+        <button *ngIf="isIT" (click)="delete(c.classId)">
+          Delete
+        </button>
+
+        <!-- View class students: IT and Principal -->
+        <button *ngIf="isIT || isPrincipal" (click)="viewStudents(c.classId)">
+          View Students
+        </button>
+
+        <!-- Assign/reassign teacher: IT and Principal -->
+       <div class="assign-block" *ngIf="isIT || isPrincipal">
+  <label for="teacherSelect-{{ c.classId }}">Assign Teacher:</label>
+  <select id="teacherSelect-{{ c.classId }}" #teacherSelect>
+    <option *ngFor="let t of teachers" [value]="t.id">
+      {{ t.email }}
+    </option>
+  </select>
+  <button (click)="assign(c.classId, teacherSelect.value)">Assign</button>
+</div>
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>

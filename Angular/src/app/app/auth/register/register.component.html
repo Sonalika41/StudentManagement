@@ -1,0 +1,25 @@
+<h2>Register</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Email</label>
+  <input formControlName="email" type="email" />
+
+  <label>Password</label>
+  <input formControlName="password" type="password" />
+
+  <label>Role</label>
+  <select formControlName="role">
+    <option value="Student">Student</option>
+    <option value="Teacher">Teacher</option>
+    <option value="Principal">Principal</option>
+  </select>
+
+  <label>Full name (optional for Student)</label>
+  <input formControlName="fullName" />
+
+  <!-- ✅ Make sure this button is visible and has type="submit" -->
+  <button type="submit">Register</button>
+
+  <p class="success" *ngIf="message">{{ message }}</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+</form>

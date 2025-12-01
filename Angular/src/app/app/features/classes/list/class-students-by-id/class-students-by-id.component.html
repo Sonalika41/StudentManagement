@@ -1,0 +1,82 @@
+<h3>Class Students</h3>
+<p class="err" *ngIf="error">{{ error }}</p>
+<p class="msg" *ngIf="message">{{ message }}</p>
+
+<div *ngIf="data">
+  <p><strong>Class:</strong> {{ data.name }} ({{ data.section }})</p>
+  <p><strong>Student Count:</strong> {{ data.studentCount }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Enrollment Date</th>
+        <th>Marks</th>
+        <th>Attendance %</th>
+        <th>Guardian Contact</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of data.students">
+        <!-- Full Name -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.fullName }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.fullName" />
+        </td>
+
+        <!-- Age -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.age }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.age" type="number" />
+        </td>
+
+        <!-- Email -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.email }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.email" />
+        </td>
+
+        <!-- Course -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.course }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.course" />
+        </td>
+
+        <!-- Enrollment Date -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.enrollmentDate | date }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.enrollmentDate" type="date" />
+        </td>
+
+        <!-- Marks -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.marks }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.marks" type="number" />
+        </td>
+
+        <!-- Attendance -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.attendancePercentage }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.attendancePercentage" type="number" />
+        </td>
+
+        <!-- Guardian Contact -->
+        <td>
+          <span *ngIf="editingStudent?.studentID !== s.studentID">{{ s.guardianContact }}</span>
+          <input *ngIf="editingStudent?.studentID === s.studentID" [(ngModel)]="form.guardianContact" />
+        </td>
+
+        <!-- Actions -->
+        <td>
+          <button *ngIf="(isIT || isPrincipal) && editingStudent?.studentID !== s.studentID" (click)="editStudent(s)">Edit</button>
+          <button *ngIf="(isIT || isPrincipal) && editingStudent?.studentID === s.studentID" (click)="saveStudent()">Save</button>
+          <button *ngIf="(isIT || isPrincipal) && editingStudent?.studentID === s.studentID" class="cancel" (click)="cancelEdit()">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

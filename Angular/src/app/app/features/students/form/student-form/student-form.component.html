@@ -1,0 +1,39 @@
+<h3>Create Student (IT)</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Full Name</label>
+  <input formControlName="fullName" />
+
+  <label>Age</label>
+  <input formControlName="age" type="number" />
+
+  <label>Email</label>
+  <input formControlName="email" type="email" />
+
+  <label>Course</label>
+  <input formControlName="course" />
+
+  <label>Enrollment Date</label>
+  <input formControlName="enrollmentDate" type="date" />
+
+  <label>Marks</label>
+  <input formControlName="marks" type="number" />
+
+  <label>Attendance %</label>
+  <input formControlName="attendancePercentage" type="number" />
+
+  <label>Guardian Contact</label>
+  <input formControlName="guardianContact" />
+
+  <label>Class</label>
+  <select formControlName="classId">
+    <option value="">Unassigned</option>
+    <option *ngFor="let c of classes" [value]="c.classId">
+      {{ c.name }} ({{ c.section }}) - {{ c.classTeacherEmail }}
+    </option>
+  </select>
+
+  <button type="submit">Create</button>
+
+  <p class="msg" *ngIf="message">{{ message }}</p>
+  <p class="err" *ngIf="error">{{ error }}</p>
+</form>

@@ -1,0 +1,15 @@
+<h3>My Leave Requests</h3>
+<p class="err" *ngIf="error">{{ error }}</p>
+<table>
+  <thead>
+    <tr><th>From</th><th>To</th><th>Reason</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let l of leaves">
+      <td>{{ l.fromDate | date }}</td>
+      <td>{{ l.toDate | date }}</td>
+      <td>{{ l.reason }}</td>
+      <td>{{ l.status }}</td>
+    </tr>
+  </tbody>
+</table>

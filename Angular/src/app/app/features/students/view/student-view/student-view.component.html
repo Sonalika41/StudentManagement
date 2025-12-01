@@ -1,0 +1,23 @@
+<h3>My Profile</h3>
+<p class="err" *ngIf="error">{{ error }}</p>
+
+<div *ngIf="student" class="profile-box">
+  <p><strong>Full Name:</strong> {{ student.fullName }}</p>
+  <p><strong>Email:</strong> {{ student.email }}</p>
+  <p><strong>Course:</strong> {{ student.course }}</p>
+  <p><strong>Marks:</strong> {{ student.marks }}</p>
+  <p><strong>Attendance %:</strong> {{ student.attendancePercentage }}</p>
+
+  <div *ngIf="student.classId; else noClass">
+    <p><strong>Class:</strong> {{ student.className }} ({{ student.classSection }})</p>
+    <p><strong>Class Teacher:</strong> {{ student.classTeacherEmail }}</p>
+  </div>
+  <ng-template #noClass>
+    <p><em>No class assigned yet.</em></p>
+  </ng-template>
+
+  <!-- ✅ Apply for leave link -->
+  <p style="margin-top: 20px;">
+    <a routerLink="/leave/apply" class="btn-apply">Apply for Leave</a>
+  </p>
+</div>
